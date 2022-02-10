@@ -1,0 +1,39 @@
+cc_binary {
+    relative_install_path: "hw",
+    owner: "sprd",
+    name: "vendor.sprd.hardware.broadcastradio@2.0-service",
+    proprietary: true,
+    init_rc: ["vendor.sprd.hardware.broadcastradio@2.0-service.rc"],
+    cflags: [
+        "-Wall",
+        "-Wextra",
+    //  "-Werror",
+    ],
+    cppflags: [
+        "-std=c++1z",
+    ],
+    srcs: [
+        "service.cpp",
+        "BroadcastRadio.cpp",
+        "TunerSession.cpp",
+        "VirtualRadio.cpp",
+        "VirtualProgram.cpp",
+        "fm_hal_bridge.cpp",
+        "fmr_core.cpp",
+        "fmr_err.cpp",
+        "common.cpp",
+    ],
+    shared_libs: [
+        "liblog",
+        "libbase",
+        "libhardware",
+        "libhidlbase",
+        "libhidltransport",
+        "libutils",
+        "android.hardware.broadcastradio@2.0",
+    ],
+    static_libs: [
+        "android.hardware.broadcastradio@common-utils-2x-lib",
+        "android.hardware.broadcastradio@common-utils-lib",
+    ],
+}
